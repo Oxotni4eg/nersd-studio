@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam-nerds</title>
+
+    <link rel="shortcut icon" href="img/nerds-favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!-- jmpress plugin -->
+    <script type="text/javascript" src="js/jmpress.min.js"></script>
+    <!-- jmslideshow plugin : extends the jmpress plugin -->
+    <script type="text/javascript" src="js/jquery.jmslideshow.js"></script>
+    <script type="text/javascript" src="js/modernizr.custom.48780.js"></script>
+    
+    <script type="text/javascript">
+        $(function() {
+            
+            var jmpressOpts	= {
+                animation		: { transitionDuration : '0.8s' }
+            };
+            
+            $( '#jms-slideshow' ).jmslideshow( $.extend( true, { jmpressOpts : jmpressOpts }, {
+                autoplay	: true,
+                bgColorSpeed: '0.8s',
+                arrows		: false
+            }));
+            
+        });
+
+        $(document).ready(function(){
+            $('a[href^="#"]').bind('click.smoothscroll',function (e) {
+		e.preventDefault();
+
+		var target = this.hash,
+		$target = $(target);
+
+		$('html, body').stop().animate({
+			'scrollTop': $target.offset().top
+		}, 900, 'swing', function () {
+			window.location.hash = target;
+		});
+            });
+
+        });
+
+        $(function() { 
+            $(window).scroll(function() {        
+            if($(this).scrollTop() != 0) {        
+                $('#toTop').fadeIn();        
+                } else {        
+                $('#toTop').fadeOut();        
+                }        
+            });        
+                $('#toTop').click(function() {        
+                $('body,html').animate({scrollTop:0},800);        
+                });        
+            });
+
+            $(document).mouseup(function (e){
+                var modalctr = $("#site");
+                var modal = $("#myForm");
+                if (!modal.is(e.target) && modal.has(e.target).length === 0){
+                modal.hide();
+                }
+            });
+
+    </script>    
+
+</head>
+<body>
+    <div class="site-nerds" id="site">
+
+        <div class="promo-header" id="header">
+            <div class="container">
+
+                <header>
+                    <a href="#"><img class="logo" src="img/nerds-logo.png" alt="Логотип нашего сайта" title="Логотип" /></a>
+
+                    <nav>
+                        <input id="menu_toggle" type="checkbox" />
+                        <label class="menu_btn" for="menu_toggle">
+                          <span></span>
+                        </label>
+
+                        <ul>
+                            <li><a href="#header">Студия</a></li>
+                            <li><a href="#partners">Клиенты</a></li>
+                            <li><a href="#advantages">Магазин</a></li>
+                            <li><a href="#map">Контакты</a></li>
+                        </ul>
+                    </nav>
+
+                    <a href="#" class="cart">Корзина</a>
+                </header>
+
+                <section id="jms-slideshow" class="jms-slideshow">
+                    <div class="step">
+                        <div class="jms-content">
+                            <h3>Долго, дорого, скрупулезно.</h3>
+                            <p>Математически выверенный дизайн для вашего сайта или мобильного приложения.</p>
+                            <a class="jms-link" href="#">Узнать больше</a>
+                        </div>
+                        <img src="img/slide1.png" alt="#" />
+                    </div>
+                    <div class="step" data-y="900" data-rotate-x="80">
+                        <div class="jms-content">
+                            <h3>Любим математику как никто другой</h3>
+                            <p>Никакого креатива, только математические формулы для расчета идеальных пропорций.</p>
+                            <a class="jms-link" href="#">Узнать больше</a>
+                        </div>
+                        <img src="img/slide2.png" alt="#" />
+                    </div>
+                    <div class="step" data-x="-100" data-z="1500" data-rotate="170">
+                        <div class="jms-content">
+                            <h3>Только ночь, только хардкор</h3>
+                            <p>Работать днем, как все? Мы против этого. Ближе к полуночи работа только начинается.</p>
+                            <a class="jms-link" href="#">Узнать больше</a>
+                        </div>
+                        <img src="img/slide3.png" alt="#" />
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <section class="padding advantages" id="advantages">
+            <div class="container">
+
+                <ul>
+                    <li>
+                        <h4>Веб-сайты</h4>
+                        <p>Мир никогда не будет прежним после того как увидит ваш сайт!</p>
+                        <button class="order pink" onclick="openForm()">Заказать</button>
+                    </li>
+                    <li>
+                        <h4>Приложения</h4>
+                        <p>Покорите топ-10 приложений в AppStore и Google Play</p>
+                        <button class="order green" onclick="openForm()">Заказать</button>
+                    </li>
+                    <li>
+                        <h4>Презентации</h4>
+                        <p>Вы даже не подозреваете, насколько вы изумительны!</p>
+                        <button class="order yellow" onclick="openForm()">Заказать</button>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <section class="padding studio">
+            <div class="container">
+
+                <div class="studio-promo">
+                    <h2>Мы — маленькая, но гордая дизайн-студия из Краснодара. </h2>
+                    <p>Исповедуем принципы минимализма и чистоты. Ставим математический расчет превыше креатива. Работаем не покладая рук, как роботы.</p>
+                    <span>Выполняем заказы на разработку:</span>
+                    <ul>                        
+                        <li>Веб-сайтов любой сложности</li>
+                        <li>Мобильных приложений для iOS и Android</li>
+                        <li>Слайдшоу и видео для корпоративных презентаций</li>
+                    </ul>
+                </div>
+
+                <div class="studio-illustration">
+                    <img src="img/nerds-illustration.png" alt="Nerds-Illustration" />
+                    <span>с 2004 года Любим точность во всем:</span>
+                    <ul>                        
+                        <li>
+                            <span class="percent">146</span>
+                            <span class="percent-description">Уровень самоотдачи</span>
+                        </li>
+                        <li>
+                            <span class="percent">100</span>
+                            <span class="percent-description">Соблюдение сроков</span>
+                        </li>
+                        <li>
+                            <span class="percent">50</span>
+                            <span class="percent-description">Минимальная предоплата</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="padding partners" id="partners">
+            <div class="container">
+                <ul>
+                    <li><a href="https://htmlacademy.ru/" target="_blank"><img src="img/html-academy-hover.png" alt="Html-academy"></a></li>
+                    <li><a href="http://barbershop-borodinski.webflow.io/" target="_blank"><img src="img/borodinski-hover.png" alt="Borodinski"></a></li>
+                    <li><a href="https://tm-pink.com/" target="_blank"><img src="img/pink-hover.png" alt="Pink"></a></li>
+                    <li><a href="https://career.habr.com/companies/mishka-ai" target="_blank"><img src="img/mishka-hover.png" alt="Mishka"></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="padding map" id="map">
+            <iframe src="https://snazzymaps.com/embed/3263"></iframe>
+
+            <div class="container">
+                <div class="contacts">
+                    <h4>NЁRDS DESIGN STUDIO</h4>
+                    <span class="adress">191186, Санкт-Петербург,<br>ул. Б. Конюшенная, д. 19/8</span>
+                    <span class="phone">тел.  +7 (812) 275-75-75</span>
+                    <button class="order btn-map" onclick="openForm()">Напишите Нам</button>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="form-popup" id="myForm">
+            <form method="get">
+                <div class="form-container">
+
+                    <fieldset>
+                        <legend>Главная информация</legend>
+                        <div>
+                            <span class="text-style-form">Фамилия<br /></span>
+                            <input placeholder="Иванов" required minlength="3" maxlength="15" type="text" name="surname" />
+                        </div>
+                        <div>
+                            <span class="text-style-form">Имя<br /></span>
+                            <input placeholder="Иван" required minlength="3" maxlength="10" type="text" name="firstname" />
+                        </div>       
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Контактная информация</legend>
+                        <div>
+                            <span class="text-style-form">Телефон<br /></span>
+                            <input required type="tel" minlength="15" maxlength="20" value="+375 () " name="tel" />
+                        </div>
+                        <div>
+                            <span class="text-style-form">Электронная почта<br /></span>
+                            <input placeholder="email@gmail.com" type="email" name="email" />
+                        </div>
+                    </fieldset>
+
+                    <div class="text-feedback">Мы с Вами свяжемся в ближайшее время!</div>
+
+                    <button type="submit" class="btn">Отправить</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>
+
+                </div>
+            </form>
+
+            <script>
+                function openForm() {
+                  document.getElementById("myForm").style.display = "block";
+                }
+                
+                function closeForm() {
+                  document.getElementById("myForm").style.display = "none";
+                }
+            </script>
+
+        </div>
+
+
+        <footer>
+            <div class="container">
+                <div class="footer-social">
+                    <ul>
+                        <li><a href="https://vk.com/" class="vk" target="_blank"></a></li>
+                        <li><a href="https://web.facebook.com/" class="fb" target="_blank"></a></li>
+                        <li><a href="https://www.instagram.com/" class="in" target="_blank"></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-content">
+                    <h3>Давайте дружить, это выгодно!</h3>
+                    <span>Скидка 10% для друзей из социальных сетей.</span>
+                </div>
+            </div>
+        </footer>
+
+        <div ID = "toTop" > ^ Наверх </div>
+        
+    </div>
+
+</body>
+</html>
+
+
